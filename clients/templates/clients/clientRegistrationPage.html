@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="auth" style="margin-top: 200px;">
+    <div class="card">
+        <div class="auth__header text-center">
+            <a href="/">
+                <img src="{% static 'images/icon.svg' %}" alt="icon" />
+            </a>
+            <h3>Register an Account</h3>
+            <p>Create a new user account</p>
+
+            <p style="text-align: right; color: blue;"><a href="{% url 'register' %}"> register as a doctor? </a></p>
+
+        </div>
+
+        <form method="POST" action="{% url 'registerClient' %}" class="form auth__form">
+            {% csrf_token %}
+            <!-- Input:Text -->
+            <div class="form__field">
+
+                {% for field in form %}
+                <!-- Input:Text -->
+                <div class=" form__field">
+                    <label for="formInput#text">{{field.label}}</label>
+                    {{field}}
+                    {% if field.label == "Gender" %}
+                    <label for="formInput#text">DOB:</label>
+                    <input type="date" id="dob" name="dob">
+                    {% endif %}
+                    <!-- {% if field.label == "Email address" %}
+                    <input class=" btn--sub " type="submit" value="Genrate OTP" />
+                    {% endif %} -->
+                </div>
+                {% endfor %}
+            </div>
+
+
+            <div class="auth__actions">
+                <input class="btn btn--sub btn--lg" type="submit" value="Sign  In" />
+            </div>
+        </form>
+        <div class="auth__alternative">
+            <p>Already have an Account?</p>
+            <a href="{% url 'allDoctors' %}">Log In</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
