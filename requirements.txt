@@ -131,7 +131,7 @@ tomli==1.2.3
 tornado==6.1
 tqdm==4.64.0
 traitlets==5.2.0
-turtle==0.3.2
+turtle==0.0.1
 typing-extensions==3.10.0.2
 tzdata==2021.5
 urllib3==1.26.9
